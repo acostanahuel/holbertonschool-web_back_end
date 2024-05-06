@@ -1,58 +1,32 @@
-export default class HolbertonCourse {
-    constructor(name, length, students) {
-      
-      if (typeof (name) === 'string') {
-        this.__name = name;
-      } else {
-        throw new TypeError('Name must be a string');
-      }
-  
-      if (typeof (length) === 'number') {
-        this.__length = length;
-      } else {
-        throw new TypeError('Length must be a number');
-      }
-  
-      if (students.every((i) => typeof i === 'string')) {
-        this.__students = students;
-      } else {
-        throw new TypeError('Students must be an array of strings');
-      }
+export default class Currency {
+  constructor(code, name) {
+    this._code = code;
+    this._name = name;
+  }
+
+  get code() {
+    return this._code;
+  }
+
+  set code(code) {
+    if (typeof code !== 'string') {
+      throw new TypeError('Name must be a string');
     }
-  
-    get name() {
-      return this.__name;
+    this._code = code;
+  }
+
+  get name() {
+    return this._name;
+  }
+
+  set name(name) {
+    if (typeof name !== 'string') {
+      throw new TypeError('Name must be a string');
     }
-  
-    set name(name) {
-      if (typeof (name) === 'string') {
-        this.__name = name;
-      } else {
-        throw new TypeError('Name must be a string');
-      }
-    }
-  
-    get length() {
-      return this.__length;
-    }
-  
-    set length(l) {
-      if (typeof (l) === 'number') {
-        this.__length = l;
-      } else {
-        throw new TypeError('Length must be a number');
-      }
-    }
-  
-    get students() {
-      return this.__students;
-    }
-  
-    set students(std) {
-      if (std.every((i) => typeof i === 'string')) {
-        this.__students = std;
-      } else {
-        throw new TypeError('Students must be an array of strings');
-      }
-    }
+    this._name = name;
+  }
+
+  displayFullCurrency() {
+    return `${this._name} (${this._code})`;
+  }
 }
